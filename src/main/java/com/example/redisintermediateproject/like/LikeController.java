@@ -19,5 +19,4 @@ public class LikeController {
     ) {
         likeService.likePost(likePostRequestDto);
     }
-    
 }
