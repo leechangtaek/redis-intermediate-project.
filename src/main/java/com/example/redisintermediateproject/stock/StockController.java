@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class StockController {
 
   private final StockService stockService;
+  private final StockLockService stockLockService;
+
+
 
   @PostMapping("/{id}/decrease")
   public void decrease(
@@ -20,4 +23,9 @@ public class StockController {
   ) {
     stockService.decrease(id);
   }
+  @PostMapping("/{id}/decrease/redis")
+  public void decreaseWithRedis(@PathVariable Long id) throws InterruptedException {
+    stockLockService.decrease(id);
+  }
+
 }
